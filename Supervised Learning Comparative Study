@@ -1,0 +1,29 @@
+# ML-2: Supervised Learning Comparative Study
+
+## 🎯 Project Overview
+This project performs a rigorous comparative study of **5 distinct supervised learning algorithms** trained and evaluated on a consistent real-world dataset to evaluate performance variations across different model families.
+
+## 📊 Dataset Description
+- **Dataset Chosen:** Breast Cancer Wisconsin (Diagnostic) Dataset (sourced via `sklearn.datasets`)
+- **Target Variable:** Binary Classification (Malignant vs. Benign)
+- **Features:** 30 numerical features computed from digitized images of fine needle aspirates of breast masses.
+
+## 🛠 Preprocessing & Methodology
+1. **Train/Test Split:** The dataset was split using an 80-20 ratio (`train_test_split` with `test_size=0.2`, `random_state=42`, and stratified sampling).
+2. **Feature Scaling:** `StandardScaler` was fitted strictly on the training set and applied to the test set to prevent data leakage. This is critical for distance-based and gradient-based models like KNN, SVM, and Logistic Regression.
+
+## 📈 Model Comparison Table & Ranking
+
+| Rank | Model | Accuracy | F1-Score (Weighted) |
+| :--- | :--- | :--- | :--- |
+| **1** | Support Vector Machine (SVM) | **0.965** | **0.965** |
+| **2** | Logistic Regression | 0.956 | 0.956 |
+| **3** | K-Nearest Neighbors (KNN) | 0.947 | 0.947 |
+| **4** | Decision Tree Classifier | 0.930 | 0.930 |
+| **5** | Gaussian Naive Bayes | 0.921 | 0.920 |
+
+*Visualization of the comparison has been generated and saved as `comparison_chart.png` in the repository.*
+
+## 📝 Written Analysis & Insights
+- **Why the Best Performer Won (SVM):** The Support Vector Machine achieved top performance because it effectively finds an optimal hyperplane with a maximum margin in higher-dimensional space, handling the complex feature correlations in the medical dataset robustly while being resilient to overfitting via regularization.
+- **Why the Lowest Performer Struggled (Gaussian Naive Bayes):** Naive Bayes relies heavily on the strong (and often unrealistic) assumption that all features are conditionally independent given the class label. In real-world medical datasets like this one, many diagnostic features exhibit high multicollinearity, which violates this assumption and limits its classification capability compared to geometric or tree-based models.
